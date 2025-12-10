@@ -1,23 +1,31 @@
 export default function BenefitsSection() {
   return (
-    <section className="w-full max-w-5xl py-24 px-6 text-center">
-      <h2 className="text-4xl font-bold">More time. More sales. More freedom.</h2>
+    <section className="py-24 px-6 bg-black">
+      <h2 className="text-center text-4xl font-bold mb-12">Why Businesses Choose Your Time</h2>
 
-      <div className="grid md:grid-cols-3 gap-8 mt-10 text-left">
-        <div className="bg-gray-900 p-6 rounded-xl">
-          <h3 className="text-xl font-semibold">Save 15–20 hours weekly</h3>
-          <p className="text-gray-400 mt-2">Let AI handle all your repetitive computer work.</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        
+        {/* Card 1 */}
+        <div className="text-center bg-gray-900 p-6 rounded-xl shadow-lg">
+          <img src="/feature-2.png" alt="Save Time" className="rounded-lg mb-4 mx-auto" />
+          <h3 className="text-2xl font-semibold mb-2">Save 20+ Hours Weekly</h3>
+          <p className="text-gray-300">Automate repetitive tasks that drain your energy and time.</p>
         </div>
 
-        <div className="bg-gray-900 p-6 rounded-xl">
-          <h3 className="text-xl font-semibold">Respond 10× faster</h3>
-          <p className="text-gray-400 mt-2">Instant AI replies = more appointments and more sales.</p>
+        {/* Card 2 */}
+        <div className="text-center bg-gray-900 p-6 rounded-xl shadow-lg">
+          <img src="/feature-3.png" alt="Scale Fast" className="rounded-lg mb-4 mx-auto" />
+          <h3 className="text-2xl font-semibold mb-2">Scale Without Hiring</h3>
+          <p className="text-gray-300">Your AI assistants handle customer conversations, tasks, and workflows 24/7.</p>
         </div>
 
-        <div className="bg-gray-900 p-6 rounded-xl">
-          <h3 className="text-xl font-semibold">Eliminate admin work</h3>
-          <p className="text-gray-400 mt-2">Focus on quoting, selling, and customer relationships.</p>
+        {/* Card 3 */}
+        <div className="text-center bg-gray-900 p-6 rounded-xl shadow-lg">
+          <img src="/feature-1.png" alt="Increase Revenue" className="rounded-lg mb-4 mx-auto" />
+          <h3 className="text-2xl font-semibold mb-2">Increase Your Revenue</h3>
+          <p className="text-gray-300">Convert more leads, answer faster, and eliminate human delay.</p>
         </div>
+
       </div>
     </section>
   );
