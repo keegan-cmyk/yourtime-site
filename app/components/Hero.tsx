@@ -1,16 +1,16 @@
 export default function Hero() {
   return (
-    <section
-      className="relative w-full text-center py-32 px-6 overflow-hidden"
-    >
-      {/* Background image */}
+    <section className="relative w-full text-center py-40 px-6 overflow-hidden">
       <div
         className="absolute inset-0 -z-10 bg-cover bg-center opacity-60"
-        style={{ backgroundImage: "url('/hero-1.png')" }}
+        style={{ backgroundImage: "url('/hero-main.png')" }}
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 -z-10 bg-black/60" />
+      <div className="absolute inset-0 -z-10 bg-black/60"></div>
+
+      <p className="absolute top-6 left-6 text-sm md:text-base text-gray-200 italic">
+        “Commit to the Lord whatever you do, and He will establish your plans.” — Proverbs 16:3
+      </p>
 
       <h1 className="text-5xl md:text-6xl font-bold leading-tight">
         Your work—done automatically. <br />
@@ -30,13 +30,6 @@ export default function Hero() {
           Book Consultation
         </a>
       </div>
-
-      <div className="mt-6">
-        <a href="#contact" className="text-gray-300 underline">
-          Ask what’s possible for your business →
-        </a>
-      </div>
     </section>
   );
 }
-
