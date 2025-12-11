@@ -2,7 +2,7 @@ export default function DemoSection() {
   return (
     <section
       id="demo"
-      className="py-28 px-6 bg-black text-center border-t border-gray-800"
+      className="py-28 px-6 bg-black text-center border-t border-gray-800 reveal-section"
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl sm:text-5xl font-semibold mb-6">
@@ -15,13 +15,8 @@ export default function DemoSection() {
           and running workflows while you sleep.
         </p>
 
-        {/* Video Container */}
         <div className="relative rounded-2xl overflow-hidden border border-gray-800 shadow-2xl shadow-black/50 mx-auto">
-          <video
-            src="/demo.mp4"
-            controls
-            className="w-full h-full object-cover"
-          />
+          <video src="/demo.mp4" controls className="w-full h-full object-cover" />
         </div>
 
         <div className="mt-10">
@@ -33,8 +28,13 @@ export default function DemoSection() {
           </a>
         </div>
 
+        {/* FUNNY TAGLINE #9 */}
+        <p className="text-primary/80 text-base font-medium mt-6">
+          You do the dreaming. We’ll handle the doing.
+        </p>
+
         <p className="text-xs text-gray-500 mt-4">
-          60-second overview · No filler · See real workflow examples
+          60-second overview · No filler · Real workflow examples
         </p>
       </div>
     </section>
