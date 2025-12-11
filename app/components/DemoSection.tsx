@@ -7,16 +7,14 @@ export default function DemoSection() {
         Watch how Your Time automates tasks, responds to customers, and runs your business while you sleep.
       </p>
 
-      <div className="flex justify-center">
-        <img
-          src="/feature-1.png"
-          alt="Demo Feature"
-          className="rounded-xl shadow-lg max-w-2xl"
-        />
-      </div>
+      <video
+        src="/demo.mp4"
+        controls
+        className="mx-auto rounded-xl shadow-lg max-w-3xl"
+      />
 
       <div className="mt-8">
-        <a href="#contact" className="text-primary underline">
+        <a href="#contact" className="text-primary underline text-lg">
           Book a consultation to see what’s possible →
         </a>
       </div>
