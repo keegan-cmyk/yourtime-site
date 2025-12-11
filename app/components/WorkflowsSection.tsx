@@ -1,28 +1,28 @@
-export default function HowItWorksSection() {
+export default function WorkflowsSection() {
   return (
     <section
-      id="how-it-works"
-      className="py-24 px-6 bg-black text-center"
+      id="workflows"
+      className="w-full max-w-5xl py-24 px-6 text-center"
     >
-      <h2 className="text-4xl font-bold mb-6">How It Works</h2>
+      <h2 className="text-4xl font-bold">Launch Automations Instantly</h2>
 
-      <div className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed space-y-6">
-        <p>
-          <strong>Step 1 — Free Consultation:</strong> We learn how your business operates and identify
-          where automation and AI can unlock the most time and revenue.
-        </p>
-        <p>
-          <strong>Step 2 — Workflow Design:</strong> We create a personalized automation plan tailored
-          to your goals, tools, and customer journey.
-        </p>
-        <p>
-          <strong>Step 3 — Build or DIY:</strong> You can configure the nodes yourself or choose our
-          done-for-you setup where we build everything for you.
-        </p>
-        <p>
-          <strong>Step 4 — Autopilot:</strong> Your AI workforce runs 24/7 while you get your time
-          back and scale faster with less effort.
-        </p>
+      <p className="text-gray-300 mt-4">
+        Choose from ready-to-use workflows or request a custom automation.
+      </p>
+
+      <div className="grid md:grid-cols-3 gap-8 mt-10 text-left">
+        {[
+          "AI Lead Qualification",
+          "AI Appointment Setter",
+          "Missed Call Text Agent",
+          "Lead Scraper",
+          "Review Request System",
+          "Content Creator",
+        ].map((title, i) => (
+          <div key={i} className="bg-gray-900 p-6 rounded-xl">
+            <h3 className="text-xl font-semibold">{title}</h3>
+          </div>
+        ))}
       </div>
     </section>
   );
