@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scrolling for all anchor links */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
@@ -11,59 +11,127 @@ html {
 body {
   background-color: #0B0B0F;
   color: white;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  opacity: 0;
+  transform: scale(0.97);
+  animation: pageLoadIn 0.9s cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
 
-  /* Smoother rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Reduce jank when transitioning elements */
-  scroll-behavior: smooth;
 }
 
-/* Selection color (clean, premium) */
+@keyframes pageLoadIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Text selection color */
 ::selection {
-  background: rgba(120, 119, 198, 0.35); /* Soft primary glow */
+  background: rgba(120, 119, 198, 0.35);
   color: white;
 }
 
-/* Subtle global glow effect for depth */
+/* Ambient AI glow background */
 body::before {
   content: "";
   position: fixed;
-  top: -200px;
-  left: -200px;
-  right: -200px;
-  bottom: -200px;
+  inset: -200px;
   background: radial-gradient(
     circle at center,
-    rgba(59, 130, 246, 0.10),
+    rgba(59,130,246,0.10),
     transparent 70%
   );
+  z-index: -2;
   pointer-events: none;
-  z-index: -1;
 }
 
-/* Clean minimal scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+/* Ambient AI gradient motion */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+      circle at 30% 70%,
+      rgba(59,130,246,0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(16,185,129,0.10),
+      transparent 55%
+    );
+  animation: ambientShift 16s ease-in-out infinite alternate;
+  z-index: -2;
+  pointer-events: none;
 }
 
-::-webkit-scrollbar-track {
-  background: #111;
+@keyframes ambientShift {
+  0% { transform: translateY(-30px) scale(1); }
+  100% { transform: translateY(30px) scale(1.08); }
 }
 
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 10px;
+/* AI Orb */
+@keyframes aiOrb {
+  0% { transform: scale(1) translateY(0px); opacity: 0.25; }
+  50% { transform: scale(1.08) translateY(-15px); opacity: 0.3; }
+  100% { transform: scale(1) translateY(0px); opacity: 0.25; }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.animate-aiOrb {
+  animation: aiOrb 8s ease-in-out infinite;
 }
 
-/* Smooth hover animations everywhere */
+/* Hero power-on blur */
+@keyframes heroPowerOn {
+  0% { opacity: 0; filter: blur(12px) brightness(0.5); }
+  40% { opacity: 1; filter: blur(4px) brightness(1.2); }
+  100% { opacity: 1; filter: blur(0px) brightness(1); }
+}
+
+.animate-heroPowerOn {
+  animation: heroPowerOn 1.4s ease-out forwards;
+}
+
+/* Particle drift */
+.particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(2px 2px at 20% 20%, rgba(255,255,255,0.12), transparent),
+    radial-gradient(2px 2px at 80% 40%, rgba(255,255,255,0.08), transparent),
+    radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.10), transparent),
+    radial-gradient(2px 2px at 60% 10%, rgba(255,255,255,0.06), transparent);
+  animation: particleFloat 18s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-300px); }
+}
+
+/* Section reveal (scroll-in) */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.7s ease-out;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* Smooth hover transitions */
 * {
   transition: color 0.2s ease, background-color 0.2s ease,
     border-color 0.2s ease, opacity 0.2s ease;
