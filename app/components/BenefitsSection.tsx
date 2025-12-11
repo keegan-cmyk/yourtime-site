@@ -25,11 +25,18 @@ export default function BenefitsSection() {
       text: "Get your life back. Whether you want more time with family, more time to build, or more time for yourself — Your Time gives it back.",
       img: "/benefit-5.png",
     },
+    {
+      title: "Automate Your Entire Workflow",
+      text: "Go beyond single tasks. Your Time connects your tools, messages, and processes into one automated system so your business runs smoothly even when you’re offline.",
+      img: "/benefit-6.png",
+    },
   ];
 
   return (
-    <section className="py-24 px-6 bg-black">
-      <h2 className="text-center text-4xl font-bold mb-12">Why Businesses Choose Your Time</h2>
+    <section id="benefits" className="py-24 px-6 bg-black">
+      <h2 className="text-center text-4xl font-bold mb-12">
+        Why Businesses Choose Your Time
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {benefits.map((b, i) => (
@@ -37,7 +44,11 @@ export default function BenefitsSection() {
             key={i}
             className="text-center bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col items-center"
           >
-            <img src={b.img} className="rounded-lg mb-4 w-full max-h-60 object-cover" />
+            <img
+              src={b.img}
+              alt={b.title}
+              className="rounded-lg mb-4 w-full max-h-60 object-cover"
+            />
             <h3 className="text-2xl font-semibold mb-2">{b.title}</h3>
             <p className="text-gray-300">{b.text}</p>
           </div>
