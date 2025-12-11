@@ -1,28 +1,54 @@
 export default function HowItWorksSection() {
+  const steps = [
+    {
+      title: "1. Discovery Call",
+      text: "We learn how your business operates, uncover bottlenecks, and identify where AI automation can save the most time and drive the biggest impact.",
+    },
+    {
+      title: "2. Automation Blueprint",
+      text: "We map out a personalized workflow system built around your tools, your leads, and your customer journey — no generic templates.",
+    },
+    {
+      title: "3. Build & Deployment",
+      text: "We configure your AI workforce — qualification, follow-up, appointment setting, reminders, workflow execution — all running 24/7.",
+    },
+    {
+      title: "4. Optimization & Scaling",
+      text: "We refine, expand, and enhance your automations as your business grows, creating a scalable system that adapts to your evolution.",
+    },
+  ];
+
   return (
     <section
       id="how-it-works"
-      className="py-24 px-6 bg-black text-center"
+      className="py-28 px-6 bg-black text-center border-t border-gray-800"
     >
-      <h2 className="text-4xl font-bold mb-6">How It Works</h2>
+      <h2 className="text-4xl sm:text-5xl font-semibold mb-6">
+        How It Works
+      </h2>
 
-      <div className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed space-y-6">
-        <p>
-          <strong>Step 1 — Free Consultation:</strong> We learn how your business operates and identify
-          where automation and AI can unlock the most time and revenue.
-        </p>
-        <p>
-          <strong>Step 2 — Workflow Design:</strong> We create a personalized automation plan tailored
-          to your goals, tools, and customer journey.
-        </p>
-        <p>
-          <strong>Step 3 — Build or DIY:</strong> You can configure the nodes yourself or choose our
-          done-for-you setup where we build everything for you.
-        </p>
-        <p>
-          <strong>Step 4 — Autopilot:</strong> Your AI workforce runs 24/7 while you get your time
-          back and scale faster with less effort.
-        </p>
+      <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-14">
+        A simple four-step framework designed to remove overwhelm and install a
+        powerful AI system inside your business.
+      </p>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
+        {steps.map((step, i) => (
+          <div
+            key={i}
+            className="flex flex-col items-center text-center space-y-4"
+          >
+            <div className="h-12 w-12 flex items-center justify-center rounded-full bg-primary/20 border border-primary/40 text-primary font-semibold text-lg">
+              {i + 1}
+            </div>
+
+            <h3 className="text-xl font-semibold">{step.title}</h3>
+
+            <p className="text-gray-300 text-base leading-relaxed">
+              {step.text}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
