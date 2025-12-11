@@ -1,31 +1,47 @@
 export default function BenefitsSection() {
+  const benefits = [
+    {
+      title: "Save 20+ Hours Weekly",
+      text: "Stop drowning in repetitive tasks. Your Time handles the work that steals your focus, energy, and freedom — so you can finally operate at your full potential.",
+      img: "/benefit-1.png",
+    },
+    {
+      title: "Scale Without Hiring",
+      text: "Grow without adding payroll stress. Your AI workforce runs conversations, tasks, and workflows 24/7 — creating capacity without increasing overhead.",
+      img: "/benefit-2.png",
+    },
+    {
+      title: "Increase Your Revenue",
+      text: "Convert more leads in less time. Respond instantly, follow up consistently, and eliminate the human delay that costs you money every single day.",
+      img: "/benefit-3.png",
+    },
+    {
+      title: "Clarity & Control Over Your Business",
+      text: "Your Time centralizes communication, tasks, workflows, and automations so your business finally runs with precision.",
+      img: "/benefit-4.png",
+    },
+    {
+      title: "Freedom To Do What You Love",
+      text: "Get your life back. Whether you want more time with family, more time to build, or more time for yourself — Your Time gives it back.",
+      img: "/benefit-5.png",
+    },
+  ];
+
   return (
     <section className="py-24 px-6 bg-black">
       <h2 className="text-center text-4xl font-bold mb-12">Why Businesses Choose Your Time</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        
-        {/* Card 1 */}
-        <div className="text-center bg-gray-900 p-6 rounded-xl shadow-lg">
-          <img src="/feature-2.png" alt="Save Time" className="rounded-lg mb-4 mx-auto" />
-          <h3 className="text-2xl font-semibold mb-2">Save 20+ Hours Weekly</h3>
-          <p className="text-gray-300">Automate repetitive tasks that drain your energy and time.</p>
-        </div>
-
-        {/* Card 2 */}
-        <div className="text-center bg-gray-900 p-6 rounded-xl shadow-lg">
-          <img src="/feature-3.png" alt="Scale Fast" className="rounded-lg mb-4 mx-auto" />
-          <h3 className="text-2xl font-semibold mb-2">Scale Without Hiring</h3>
-          <p className="text-gray-300">Your AI assistants handle customer conversations, tasks, and workflows 24/7.</p>
-        </div>
-
-        {/* Card 3 */}
-        <div className="text-center bg-gray-900 p-6 rounded-xl shadow-lg">
-          <img src="/feature-1.png" alt="Increase Revenue" className="rounded-lg mb-4 mx-auto" />
-          <h3 className="text-2xl font-semibold mb-2">Increase Your Revenue</h3>
-          <p className="text-gray-300">Convert more leads, answer faster, and eliminate human delay.</p>
-        </div>
-
+        {benefits.map((b, i) => (
+          <div
+            key={i}
+            className="text-center bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col items-center"
+          >
+            <img src={b.img} className="rounded-lg mb-4 w-full max-h-60 object-cover" />
+            <h3 className="text-2xl font-semibold mb-2">{b.title}</h3>
+            <p className="text-gray-300">{b.text}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
