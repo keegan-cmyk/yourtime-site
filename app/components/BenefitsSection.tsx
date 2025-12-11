@@ -33,5 +33,33 @@ export default function BenefitsSection() {
   ];
 
   return (
-    <section id="benefits" className="py-28 px-6 bg-black border-t border-gray-800">
+    <section
+      id="benefits"
+      className="py-28 px-6 bg-black border-t border-gray-800"
+    >
       <h2 className="text-center text-4xl sm:text-5xl font-semibold mb-14">
+        Why Businesses Choose Your Time
+      </h2>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {benefits.map((benefit, index) => (
+          <div
+            key={index}
+            className="yt-card-lift p-8 rounded-2xl bg-gray-900/60 border border-gray-800"
+          >
+            <img
+              src={benefit.img}
+              alt={benefit.title}
+              className="w-12 h-12 mb-5 opacity-90"
+            />
+
+            <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
+
+            <p className="text-gray-400 leading-relaxed">{benefit.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
