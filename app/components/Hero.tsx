@@ -1,11 +1,14 @@
 export default function Hero() {
   return (
     <section className="relative w-full overflow-hidden bg-black animate-heroPowerOn">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.25),_transparent_60%),_radial-gradient(circle_at_bottom,_rgba(16,185,129,0.18),_transparent_55%)]" />
+
+      {/* AI Core Orb */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="animate-aiOrb w-[500px] h-[500px] rounded-full opacity-25 blur-3xl bg-gradient-to-br from-primary/40 via-emerald-300/30 to-transparent"></div>
+      </div>
 
       <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-24 lg:pt-36 lg:pb-32 flex flex-col lg:flex-row items-center gap-12">
-        
-        {/* Left */}
+
         <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6">
           <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gray-400">
             YOUR TIME · AI WORKFORCE
@@ -13,33 +16,21 @@ export default function Hero() {
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight">
             Get your time back
-            <span className="block text-primary">with an AI workforce that never sleeps.</span>
+            <span className="block text-primary">
+              with an AI workforce that never sleeps.
+            </span>
           </h1>
 
           <p className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
-            Your Time connects your tools, conversations, and workflows into one intelligent system — so leads are followed up, tasks get done, and your business moves forward even when you log off.
+            Your Time connects your tools, conversations, and workflows into one
+            intelligent system — so leads are followed up, tasks get done, and
+            your business moves forward even when you log off.
           </p>
 
-          {/* FUNNY TAGLINE #6 */}
+          {/* FUNNY TAGLINE */}
           <p className="text-primary/80 font-medium text-base sm:text-lg">
             Powered by AI. Fueled by your desire to stop doing boring sh*t.
           </p>
-
-          {/* Key Proof Strip */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start text-sm mt-4">
-            <div className="flex items-center gap-2 text-gray-300">
-              <span className="h-2 w-2 rounded-full bg-primary" />
-              <span>Save 20+ hours per week</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <span className="h-2 w-2 rounded-full bg-primary" />
-              <span>Run follow-up 24/7</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <span className="h-2 w-2 rounded-full bg-primary" />
-              <span>Built for real businesses</span>
-            </div>
-          </div>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
@@ -58,9 +49,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right */}
+        {/* Parallax Hero Image */}
         <div className="w-full lg:w-1/2 flex justify-center">
-          <div className="relative w-full max-w-lg">
+          <div className="relative w-full max-w-lg parallax" data-depth="0.15">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-primary/40 via-transparent to-emerald-300/30 blur-2xl opacity-60" />
             <div className="relative rounded-3xl bg-gradient-to-b from-gray-900 to-black border border-gray-800 shadow-2xl overflow-hidden">
               <img
@@ -71,6 +62,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
