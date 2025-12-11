@@ -15,16 +15,17 @@ export default function AboutFounder() {
         </p>
 
         <p>
-          For years, I watched business owners lose time, momentum, and
-          opportunity because they simply didn&apos;t have systems. No
-          automation. No leverage. Just willpower and chaos.
+          For years, I watched business owners lose revenue simply because they
+          weren’t adapting. The world is changing fast, and the people who
+          hesitate often fall behind — not because they’re not capable, but
+          because they lack systems, automation, and leverage.
         </p>
 
         <p>
-          After overcoming my own battles with overwhelm, discipline, and
-          starting over, I committed to helping people break free from busywork
-          and reclaim the time God gave them — so they can focus on what truly
-          matters.
+          I’ve committed myself to helping people get their time back — to focus
+          on the things that make them feel alive, inspired, and fulfilled. To
+          help them spend more meaningful time with their families. Because your
+          job is not meant to be your life.
         </p>
 
         <div className="flex justify-center mt-8 mb-4">
@@ -36,9 +37,9 @@ export default function AboutFounder() {
         </div>
 
         <p>
-          Your Time is my mission: to give business owners clarity, structure,
-          and freedom so they can grow with confidence and finally step into
-          their calling — without burning out in the process.
+          When used correctly, AI is a tool that gives us time, freedom, and
+          energy back — so we can live with purpose, build with clarity, and
+          grow without burning out in the process.
         </p>
       </div>
     </section>
