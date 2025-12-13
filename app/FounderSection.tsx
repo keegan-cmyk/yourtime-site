@@ -1,6 +1,9 @@
 export default function FounderSection() {
   return (
-    <section className="relative py-32 px-6 bg-black border-t border-gray-800 overflow-hidden">
+    <section
+      id="founder"
+      className="relative py-32 px-6 bg-black border-t border-gray-800 overflow-hidden"
+    >
       {/* Ambient background texture */}
       <div
         className="absolute inset-0 -z-10 opacity-[0.06] bg-cover bg-center blur-3xl"
@@ -10,13 +13,16 @@ export default function FounderSection() {
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Founder Image */}
         <div className="relative flex justify-center">
-          <div className="relative rounded-3xl overflow-hidden border border-gray-800 shadow-2xl shadow-black/60">
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/70">
             <img
               src="/founder.png"
               alt="Founder of Your Time"
-              className="w-full max-w-md object-contain"
+              className="w-full max-w-md object-cover"
             />
           </div>
+
+          {/* subtle glow */}
+          <div className="absolute inset-0 -z-10 rounded-3xl bg-purple-500/10 blur-3xl" />
         </div>
 
         {/* Founder Copy */}
