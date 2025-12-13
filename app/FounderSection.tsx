@@ -15,10 +15,15 @@ export default function FounderSection() {
         <div className="relative flex justify-center">
           <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/70">
             <img
-              src="/founder.png"
-              alt="Founder of Your Time"
-              className="w-full max-w-md object-cover"
-            />
+  src="/founder.png"
+  alt="Founder of Your Time"
+  style={{
+    width: "300px",
+    height: "300px",
+    border: "2px solid red",
+    background: "white",
+  }}
+/>
           </div>
 
           {/* subtle glow */}
