@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 /* =========================
    TYPES
 ========================= */
+
 type Metrics = {
   qualified?: number;
   booked?: number;
@@ -18,7 +19,7 @@ type Metrics = {
 
 type Message = {
   time: string;
-  actor: 'ai' | 'prospect' | 'customer';
+  actor: string; // intentionally relaxed for demo data
   message: string;
   workflow?: {
     title: string;
@@ -37,23 +38,23 @@ type WorkflowEvent = {
 /* =========================
    COMPONENT
 ========================= */
-export default function FuturisticDemo() {
+
+export default function DemoSection() {
   const [selectedScenario, setSelectedScenario] = useState(0);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [metrics, setMetrics] = useState<Metrics>({});
   const [activeWorkflows, setActiveWorkflows] = useState<WorkflowEvent[]>([]);
-  const [particles, setParticles] = useState<any[]>([]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   /* =========================
      SCENARIOS
   ========================= */
+
   const scenarios = [
     {
       title: 'Lead Qualification',
       icon: '🎯',
-      color: 'from-blue-500 to-cyan-500',
       timeline: [
         {
           time: '00:00',
@@ -65,47 +66,37 @@ export default function FuturisticDemo() {
           time: '00:02',
           actor: 'ai',
           message:
-            'Thank you for your interest. To ensure I connect you with the right specialist, may I ask about your current team size and primary use case?',
-          workflow: { title: 'AI Engagement Initiated', icon: '🤖', color: 'purple' },
+            'Thanks for reaching out. Can you tell me your team size and main goal?',
+          workflow: { title: 'AI Engaged', icon: '🤖', color: 'purple' },
         },
         {
           time: '00:45',
           actor: 'prospect',
-          message: "We're a team of 50+ looking to automate our sales workflows.",
-        },
-        {
-          time: '00:47',
-          actor: 'ai',
-          message:
-            "Based on your requirements, you're an excellent fit for our Enterprise tier. Would you like to schedule a consultation?",
-          workflow: { title: 'Lead Qualified', icon: '🔥', color: 'red' },
+          message: "We're a 50+ person team looking to automate sales.",
         },
         {
           time: '01:14',
           actor: 'ai',
-          message:
-            "I've scheduled a call for Thursday at 2 PM EST. Calendar invite sent.",
-          workflow: { title: 'Meeting Scheduled', icon: '✅', color: 'green' },
+          message: 'Great fit. I’ve booked a consultation for Thursday.',
+          workflow: { title: 'Meeting Booked', icon: '✅', color: 'green' },
         },
       ],
       outcome: { qualified: 1, conversion: 87, value: 15000 },
     },
     {
-      title: 'Appointment Scheduling',
+      title: 'Appointment Booking',
       icon: '📅',
-      color: 'from-purple-500 to-pink-500',
       timeline: [
         {
           time: '00:00',
           actor: 'prospect',
-          message: 'I need to book a product demonstration.',
-          workflow: { title: 'Scheduling Request', icon: '📊', color: 'blue' },
+          message: 'Can I book a demo?',
+          workflow: { title: 'Booking Request', icon: '📊', color: 'blue' },
         },
         {
           time: '00:31',
           actor: 'ai',
-          message:
-            'Confirmed. Wednesday, January 15 at 3:30 PM EST. Calendar invite sent.',
+          message: 'Confirmed for Wednesday at 3:30 PM.',
           workflow: { title: 'Appointment Confirmed', icon: '✅', color: 'green' },
         },
       ],
@@ -114,20 +105,18 @@ export default function FuturisticDemo() {
     {
       title: 'Customer Support',
       icon: '⚡',
-      color: 'from-green-500 to-emerald-500',
       timeline: [
         {
           time: '00:00',
           actor: 'customer',
-          message: "I'm having trouble with the Salesforce integration.",
-          workflow: { title: 'Support Ticket Created', icon: '📊', color: 'blue' },
+          message: "Our CRM sync isn't working.",
+          workflow: { title: 'Support Ticket', icon: '📊', color: 'blue' },
         },
         {
           time: '00:36',
           actor: 'ai',
-          message:
-            "Issue identified and resolved. Sync restored within minutes.",
-          workflow: { title: 'Resolution Applied', icon: '🔧', color: 'orange' },
+          message: 'Issue fixed. Sync restored.',
+          workflow: { title: 'Resolved', icon: '🔧', color: 'orange' },
         },
       ],
       outcome: { responded: 1, resolutionTime: 4, satisfaction: 4.9 },
@@ -135,34 +124,9 @@ export default function FuturisticDemo() {
   ];
 
   /* =========================
-     PARTICLES
-  ========================= */
-  useEffect(() => {
-    const newParticles = Array.from({ length: 40 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      speedX: (Math.random() - 0.5) * 0.3,
-      speedY: (Math.random() - 0.5) * 0.3,
-    }));
-    setParticles(newParticles);
-
-    const interval = setInterval(() => {
-      setParticles(prev =>
-        prev.map(p => ({
-          ...p,
-          x: (p.x + p.speedX + 100) % 100,
-          y: (p.y + p.speedY + 100) % 100,
-        }))
-      );
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  /* =========================
      PLAY SCENARIO
   ========================= */
+
   const playScenario = () => {
     setIsPlaying(true);
     setMessages([]);
@@ -203,14 +167,15 @@ export default function FuturisticDemo() {
   /* =========================
      RENDER
   ========================= */
+
   return (
-    <div className="relative bg-black py-24 overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-6 text-white">
-        <h2 className="text-6xl font-bold mb-12 text-center">
-          Watch Intelligence In Motion
+    <section className="relative bg-black py-24">
+      <div className="max-w-7xl mx-auto px-6 text-white">
+        <h2 className="text-5xl font-bold mb-10 text-center">
+          Watch AI Work in Real Time
         </h2>
 
-        <div className="flex justify-center gap-4 mb-12 flex-wrap">
+        <div className="flex justify-center gap-4 mb-10 flex-wrap">
           {scenarios.map((s, i) => (
             <button
               key={i}
@@ -237,19 +202,28 @@ export default function FuturisticDemo() {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {metrics.qualified !== undefined && (
-              <div>Qualified: {metrics.qualified}</div>
+              <div>Qualified Leads: {metrics.qualified}</div>
             )}
             {metrics.booked !== undefined && (
-              <div>Booked: {metrics.booked}</div>
+              <div>Booked Appointments: {metrics.booked}</div>
             )}
             {metrics.responded !== undefined && (
-              <div>Responded: {metrics.responded}</div>
+              <div>Responses Sent: {metrics.responded}</div>
+            )}
+            {metrics.conversion !== undefined && (
+              <div>Conversion Rate: {metrics.conversion}%</div>
+            )}
+            {metrics.showRate !== undefined && (
+              <div>Show Rate: {metrics.showRate}%</div>
+            )}
+            {metrics.resolutionTime !== undefined && (
+              <div>Resolution Time: {metrics.resolutionTime} min</div>
             )}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
