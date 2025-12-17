@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function AboutFounder() {
   return (
     <section className="relative py-32 px-6 bg-black border-t border-white/10">
@@ -7,13 +5,11 @@ export default function AboutFounder() {
         
         {/* Founder Image */}
         <div className="flex justify-center">
-          <div className="relative w-[320px] h-[420px] rounded-3xl overflow-hidden border border-white/10 bg-neutral-900">
-            <Image
+          <div className="w-[320px] h-[420px] rounded-3xl overflow-hidden border border-white/10">
+            <img
               src="/founder.png"
               alt="Founder of Your Time"
-              fill
-              className="object-cover"
-              priority
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
