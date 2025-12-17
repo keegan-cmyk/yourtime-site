@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import SocialBar from "./components/SocialBar";
 import BenefitsSection from "./components/BenefitsSection";
+import MissionSection from "./components/MissionSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import WorkflowsSection from "./components/WorkflowsSection";
 import AboutFounder from "./components/AboutFounder";
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <QuickNav />
       <SocialBar />
+      <MissionSection />
       <BenefitsSection />
       <HowItWorksSection />
       <WorkflowsSection />
