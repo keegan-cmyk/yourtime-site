@@ -109,13 +109,7 @@ const HeroSection = () => {
             <p className="text-xl text-gray-300 leading-relaxed max-w-xl">
               An intelligent AI workforce that qualifies leads, books appointments, follows up with customers, and executes workflows—operating 24/7 while you focus on what matters.
             </p>
-
-            <div className="flex flex-wrap gap-4">
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold text-white overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50">
-                <span className="relative z-10">Watch the Demo</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </button>
-              
+            
               <button className="px-8 py-4 bg-white/5 border border-white/10 rounded-lg font-semibold text-white backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-all">
                 Book Consultation
               </button>
