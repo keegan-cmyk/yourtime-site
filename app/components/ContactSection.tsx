@@ -3,23 +3,25 @@
 import { useState } from "react";
 
 export default function ContactSection() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
 
     const formData = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(formData);
+    const payload = Object.fromEntries(formData.entries());
 
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
+      if (!res.ok) throw new Error("Request failed");
 
       setStatus("success");
       e.currentTarget.reset();
@@ -53,185 +55,122 @@ export default function ContactSection() {
             </h3>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">
-                  Your Name
-                </label>
-                <input
-                  name="name"
-                  required
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
+              <input
+                name="name"
+                required
+                placeholder="Your Name"
+                className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+              />
 
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">Email</label>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="Email"
+                className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+              />
 
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">Phone</label>
-                <input
-                  name="phone"
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
+              <input
+                name="phone"
+                placeholder="Phone"
+                className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+              />
 
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">
-                  Business Type
-                </label>
-                <input
-                  name="businessType"
-                  placeholder="e.g. roofing, coaching, real estate, agency"
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
+              <input
+                name="businessType"
+                placeholder="Business Type"
+                className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+              />
             </div>
           </div>
 
-          {/* LOCATION */}
+          {/* BUSINESS DETAILS */}
           <div>
             <h3 className="text-xl font-semibold mb-4 text-gray-100">
               Business Details
             </h3>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">
-                  City / State or Province
-                </label>
-                <input
-                  name="location"
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
+            <input
+              name="location"
+              placeholder="City / State / Province"
+              className="w-full mb-4 rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
 
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">
-                  Website URL (if you have one)
-                </label>
-                <input
-                  name="website"
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
-            </div>
+            <input
+              name="website"
+              placeholder="Website URL"
+              className="w-full mb-4 rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
 
-            <div className="mt-6">
-              <label className="block text-sm text-gray-400 mb-1">
-                Social accounts (Instagram, TikTok, Facebook, etc.)
-              </label>
-              <input
-                name="socials"
-                className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-              />
-            </div>
+            <input
+              name="socials"
+              placeholder="Social accounts"
+              className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
           </div>
 
           {/* QUESTIONS */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4 text-gray-100">
-              Tell Us About Your Needs
-            </h3>
+          <div className="space-y-6">
+            <textarea
+              name="topTasks"
+              rows={3}
+              placeholder="Top 3 repetitive tasks you want to eliminate"
+              className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
 
-            <div className="space-y-6">
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">
-                  What are the top 3 repetitive tasks you wish you could eliminate?
-                </label>
-                <textarea
-                  name="topTasks"
-                  rows={3}
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
+            <textarea
+              name="bottlenecks"
+              rows={3}
+              placeholder="What slows your business down most?"
+              className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
 
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">
-                  What slows your business down the most?
-                </label>
-                <textarea
-                  name="bottlenecks"
-                  rows={3}
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
+            <input
+              name="weeklyHours"
+              placeholder="Hours spent on admin weekly"
+              className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm text-gray-400 mb-1">
-                    Hours spent on admin/computer work weekly
-                  </label>
-                  <input
-                    name="weeklyHours"
-                    className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                  />
-                </div>
+            <input
+              name="implementationStyle"
+              placeholder="Preferred implementation style"
+              className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
 
-                <div>
-                  <label className="block text-sm text-gray-400 mb-1">
-                    Preferred implementation style
-                  </label>
-                  <input
-                    name="implementationStyle"
-                    placeholder="Done-for-you / Guided / Not sure"
-                    className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                  />
-                </div>
-              </div>
+            <textarea
+              name="futureVision"
+              rows={3}
+              placeholder="What would change if AI ran parts of your business?"
+              className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
 
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">
-                  What would change for you if AI ran parts of your business 24/7?
-                </label>
-                <textarea
-                  name="futureVision"
-                  rows={3}
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm text-gray-400 mb-1">
-                  How soon would you like to begin?
-                </label>
-                <input
-                  name="startTimeline"
-                  placeholder="Immediately / This month / This quarter / Just exploring"
-                  className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm focus:border-primary outline-none"
-                />
-              </div>
-            </div>
+            <input
+              name="startTimeline"
+              placeholder="How soon would you like to begin?"
+              className="w-full rounded-lg bg-black border border-gray-700 px-3 py-2 text-sm"
+            />
           </div>
 
-          {/* Submit */}
-          <div>
-            <button
-              type="submit"
-              disabled={status === "submitting"}
-              className="w-full mt-2 rounded-lg bg-primary text-black font-semibold py-3 text-lg shadow-lg shadow-primary/40 hover:shadow-primary/60 transition-shadow disabled:opacity-60"
-            >
-              {status === "submitting" ? "Submitting..." : "Submit Your Answers"}
-            </button>
+          {/* SUBMIT */}
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="w-full mt-6 rounded-lg bg-purple-500 text-black font-semibold py-3 text-lg disabled:opacity-60"
+          >
+            {status === "submitting" ? "Submitting..." : "Submit Your Answers"}
+          </button>
 
-            {status === "success" && (
-              <p className="text-green-400 text-sm mt-3 text-center">
-                Thank you — your tailored automation plan is on its way.
-              </p>
-            )}
+          {status === "success" && (
+            <p className="text-green-400 text-sm mt-4 text-center">
+              Thank you — your information has been sent.
+            </p>
+          )}
 
-            {status === "error" && (
-              <p className="text-red-400 text-sm mt-3 text-center">
-                Something went wrong. Please try again or contact us directly.
-              </p>
-            )}
-          </div>
+          {status === "error" && (
+            <p className="text-red-400 text-sm mt-4 text-center">
+              Something went wrong. Please try again.
+            </p>
+          )}
         </form>
       </div>
     </section>
